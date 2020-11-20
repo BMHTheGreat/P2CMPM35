@@ -1,12 +1,13 @@
 function init(elements) {
 	let canvasW = 1100;
-    let canvasH = 600;
+    let canvasH = 800;
 	
 	let margin = 50;
 	let w = canvasW - (margin * 2);
 	let h = canvasH - (margin * 2);
 	let xinc = w / 10;
     let yinc = h / 10;
+    
 
 	let svg = d3.select("body").append("svg")
 	.attr("width", canvasW)
@@ -20,33 +21,6 @@ function init(elements) {
     gamesRPG = elements.filter( e=> {return e.Game == "RPG"} );
     gamesMGacha = elements.filter( e=> {return e.Game == "Mobile Gacha"} );
     
-	
-	let rects = svg.selectAll()
-	   .data(gamesRPG)
-	   .enter()
-	      .append("rect")
-		     .attr("fill", d3.color("lightblue", .75))
-			 .attr("x", d=> {return (margin*1.75) + (100*(d.ID)) + 30; } )
-			 .attr("y", d=> {return -40 + canvasH - (margin + (d.GameID*yinc*1.2)); } )
-			 .attr("width", d=> {return 75} )
-			 .attr("height", d=> {return 50} )
-			 .attr("stroke", d3.color("black"))
-			 .attr("stroke-width", 3)
-	
-	let rects2 = svg.selectAll()
-	   .data(gamesMGacha)
-	   .enter()
-	      .append("rect")
-		     .attr("fill", d3.color("lightcoral", .75))
-			 .attr("x", d=> {return (margin*1.75) + (100*(d.ID)) + 30; } )
-			 .attr("y", d=> {return -40 + canvasH - (margin + (d.GameID*yinc*1.2)); } )
-			 .attr("width", d=> {return 75} )
-			 .attr("height", d=> {return 50} )
-			 .attr("stroke", d3.color("black"))
-			 .attr("stroke-width", 3)
-	
-
-	
 	const legend = svg.append("rect")
 	.attr("fill", "transparent")
 	.attr("x", (canvasW - 250) )
@@ -155,5 +129,68 @@ function init(elements) {
     .attr("font-size", "60px")
     .attr("fill", "black")
     .text("Su");
+	
+	
+	
+	let rects = svg.selectAll()
+	   .data(gamesMGacha)
+	   .enter()
+	      .append("rect")
+		     .attr("fill", d3.color("lightcoral", .75))
+			 .attr("x", d=> {return (margin*1.75) + (100*(d.ID)) + 30; } )
+			 .attr("y", d=> {return -40 + canvasH - (margin + (d.GameID*yinc*1.2)); } )
+			 .attr("width", d=> {return 75} )
+			 .attr("height", d=> {return 50} )
+			 .attr("stroke", d3.color("black"))
+			 .attr("stroke-width", 3)
+	
+			.on("mouseover", expandRect)
+			.on("mouseout", shrinkRect)
+		;
+		
+	let rects2 = svg.selectAll()
+	   .data(gamesRPG)
+	   .enter()
+	      .append("rect")
+		     .attr("fill", d3.color("lightblue", .75))
+			 .attr("x", d=> {return (margin*1.75) + (100*(d.ID)) + 30; } )
+			 .attr("y", d=> {return -40 + canvasH - (margin + (d.GameID*yinc*1.2)); } )
+			 .attr("width", d=> {return 75} )
+			 .attr("height", d=> {return 50} )
+			 .attr("stroke", d3.color("black"))
+			 .attr("stroke-width", 3)
+			 
+			 .on("mouseover", expandRect)
+			 .on("mouseout", shrinkRect)
+		;
+		
+	
+	
+
+
+	function expandRect(d,i) {
+	  let heightTop = canvasH - (d.Fun*60);
+	  d3.select(this).transition()
+     	.duration("200")
+        .attr("y", d => {return (canvasH - (d.Fun*60)) - 100;} )
+		.attr("height", d => {return (776 - (canvasH - (d.Fun*60))) ; } )
+	}
+	
+	function shrinkRect(d,i) {
+	  d3.select(this).transition()
+		.duration("200")
+		.attr("y", d=> {return -40 + canvasH - (margin + (d.GameID*yinc*1.2)); })
+		.attr("height", 50)
+	}
+	
+	
+	
+	
+
+	
+	
+	
+
+	
 	
 }

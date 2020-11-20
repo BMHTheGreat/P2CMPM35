@@ -1,11 +1,11 @@
-ID,Day,Fun,Played,GameID,Game
-0,Monday,5,1,1,RPG
-1,Tuesday,5,1,1,Mobile Gacha
-1,Tuesday,7,2,2,RPG
-2,Wednesday,4,3,1,Mobile Gacha
-3,Thursday,8,2,1,RPG
-4,Friday,6,1,1,RPG
-4,Friday,3,2,2,Mobile Gacha
-5,Saturday,9,3,1,RPG
-6,Sunday,4,3,1,Mobile Gacha
-6,Sunday,6,1,2,RPG
+Index,ID,Day,Fun,Played,GameID,Game
+0,0,Monday,5,1,1,RPG
+1,1,Tuesday,5,1,2,Mobile Gacha
+2,1,Tuesday,7,2,1,RPG
+3,2,Wednesday,4,3,1,Mobile Gacha
+4,3,Thursday,8,2,1,RPG
+5,4,Friday,6,1,1,RPG
+6,4,Friday,3,2,2,Mobile Gacha
+7,5,Saturday,9,3,1,RPG
+8,6,Sunday,4,3,2,Mobile Gacha
+9,6,Sunday,6,1,1,RPG
