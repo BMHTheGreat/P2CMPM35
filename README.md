@@ -2,9 +2,9 @@
 Visualization of D3
 
 
-Team Scales
-Alexa Wilbert
-Brent Hopkins
+Team Scales:
+Alexa Wilbert,
+Brent Hopkins,
 Claudia McMillin
 
 https://observablehq.com/@d3/zoomable-icicle
