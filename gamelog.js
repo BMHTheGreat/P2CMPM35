@@ -1,6 +1,6 @@
 function init(elements) {
-	let canvasW = 900;
-    let canvasH = 400;
+	let canvasW = 1100;
+    let canvasH = 600;
 	
 	let margin = 50;
 	let w = canvasW - (margin * 2);
@@ -25,11 +25,11 @@ function init(elements) {
 	   .data(gamesRPG)
 	   .enter()
 	      .append("rect")
-		     .attr("fill", d3.color("turquoise"))
-			 .attr("x", d=> {return -30 + (margin*1.75) + (100*(d.ID)); } )
-			 .attr("y", d=> {return -30 + canvasH - (margin + (d.GameID*yinc)); } )
-			 .attr("width", d=> {return 20} )
-			 .attr("height", d=> {return 20} )
+		     .attr("fill", d3.color("lightblue", .75))
+			 .attr("x", d=> {return (margin*1.75) + (100*(d.ID)) + 30; } )
+			 .attr("y", d=> {return -40 + canvasH - (margin + (d.GameID*yinc*1.2)); } )
+			 .attr("width", d=> {return 75} )
+			 .attr("height", d=> {return 50} )
 			 .attr("stroke", d3.color("black"))
 			 .attr("stroke-width", 3)
 	
@@ -37,11 +37,11 @@ function init(elements) {
 	   .data(gamesMGacha)
 	   .enter()
 	      .append("rect")
-		     .attr("fill", d3.color("red"))
-			 .attr("x", d=> {return -30 + (margin*1.75) + (100*(d.ID)); } )
-			 .attr("y", d=> {return -30 + canvasH - (margin + (d.GameID*yinc)); } )
-			 .attr("width", d=> {return 20} )
-			 .attr("height", d=> {return 20} )
+		     .attr("fill", d3.color("lightcoral", .75))
+			 .attr("x", d=> {return (margin*1.75) + (100*(d.ID)) + 30; } )
+			 .attr("y", d=> {return -40 + canvasH - (margin + (d.GameID*yinc*1.2)); } )
+			 .attr("width", d=> {return 75} )
+			 .attr("height", d=> {return 50} )
 			 .attr("stroke", d3.color("black"))
 			 .attr("stroke-width", 3)
 	
@@ -56,8 +56,8 @@ function init(elements) {
 	.attr("stroke", d3.color("black"))
 	.attr("stroke-width", 3)
 	
-	const rectComplete = svg.append("rect")
-	.attr("fill", "turquoise")
+	const rectgamesRPG = svg.append("rect")
+	.attr("fill", "lightblue",.75)
 	.attr("x", (canvasW - 225) )
 	.attr("y", 75)
 	.attr("width",30)
@@ -65,7 +65,7 @@ function init(elements) {
 	.attr("stroke", d3.color("black"))
 	.attr("stroke-width", 3)
 	
-	const textComplete = svg.append("text")
+	const textgamesRPG = svg.append("text")
 	.attr("x", (canvasW - 130))
 	.attr("y", 95)
 	.attr("text-anchor","middle")
@@ -75,8 +75,8 @@ function init(elements) {
 	.text("gamesRPG")
 	
 	
-	const rectIncomplete = svg.append("rect")
-	.attr("fill", "red")
+	const rectgamesMGacha = svg.append("rect")
+	.attr("fill", "lightcoral",.75)
 	.attr("x", (canvasW - 225) )
 	.attr("y", 140)
 	.attr("width", 30)
@@ -84,7 +84,7 @@ function init(elements) {
 	.attr("stroke", d3.color("black"))
 	.attr("stroke-width", 3)
 	
-	const textIncomplete = svg.append("text")
+	const textgamesMGacha = svg.append("text")
 	.attr("x", (canvasW - 125))
 	.attr("y", 160)
 	.attr("text-anchor","middle")
@@ -94,57 +94,66 @@ function init(elements) {
 	.text("gamesMGatcha")	
 	
 	const MonText = svg.append("text")
-    .attr("x",  (-25 + (margin*1.75)) + 10 )
-    .attr("y", canvasH - 60)
+    .attr("x",  ((margin*1.75)) + 65 )
+    .attr("y", canvasH - 35)
     .attr("text-anchor","middle")
     .attr("font-family", "sans-serif")
-    .attr("font-size", "12px")
+    .attr("font-size", "60px")
     .attr("fill", "black")
-    .text("Monday");
+    .text("M");
 	
 	const TuesText = svg.append("text")
-    .attr("x",  (-20 + (margin*1.75) + 100) )
-    .attr("y", canvasH - 60)
+    .attr("x",  ((margin*1.75) + 165) )
+    .attr("y", canvasH - 35)
     .attr("text-anchor","middle")
     .attr("font-family", "sans-serif")
-    .attr("font-size", "12px")
+    .attr("font-size", "60px")
     .attr("fill", "black")
-    .text("Tuesday");
+    .text("T");
 	
     const WedText = svg.append("text")
-    .attr("x",  (-20 + (margin*1.75) + (100*2)) )
-    .attr("y", canvasH - 60)
+    .attr("x",  ((margin*1.75) + 265) )
+    .attr("y", canvasH - 35)
     .attr("text-anchor","middle")
     .attr("font-family", "sans-serif")
-    .attr("font-size", "12px")
+    .attr("font-size", "60px")
     .attr("fill", "black")
-    .text("Wednesday");
+    .text("W");
 	
     const ThursText = svg.append("text")
-    .attr("x",  (-20 + (margin*1.75) + (100*3)) )
-    .attr("y", canvasH - 60)
+    .attr("x",  ((margin*1.75) + 365) )
+    .attr("y", canvasH - 35)
     .attr("text-anchor","middle")
     .attr("font-family", "sans-serif")
-    .attr("font-size", "12px")
+    .attr("font-size", "60px")
     .attr("fill", "black")
-    .text("Thursday");
+    .text("Th");
 
 	const FriText = svg.append("text")
-    .attr("x",  (-20 + (margin*1.75) + (100*4)) )
-    .attr("y", canvasH - 60)
+    .attr("x",  ((margin*1.75) + 465) )
+    .attr("y", canvasH - 35)
     .attr("text-anchor","middle")
     .attr("font-family", "sans-serif")
-    .attr("font-size", "12px")
+    .attr("font-size", "60px")
     .attr("fill", "black")
-    .text("Friday");
+    .text("F");
 	
 	const SatText = svg.append("text")
-    .attr("x",  (-20 + (margin*1.75) + (100*5)) )
-    .attr("y", canvasH - 60)
+    .attr("x",  ((margin*1.75) + 565) )
+    .attr("y", canvasH - 35)
     .attr("text-anchor","middle")
     .attr("font-family", "sans-serif")
-    .attr("font-size", "12px")
+    .attr("font-size", "60px")
     .attr("fill", "black")
-    .text("Saturday");	
+    .text("S");	
+	
+	const SunText = svg.append("text")
+    .attr("x",  ((margin*1.75) + 665) )
+    .attr("y", canvasH - 35)
+    .attr("text-anchor","middle")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "60px")
+    .attr("fill", "black")
+    .text("Su");
 	
 }
