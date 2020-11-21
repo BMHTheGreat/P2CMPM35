@@ -17,7 +17,8 @@ function init(elements) {
 		
 		
 	let Games;
-
+    
+	//games = elements.filer( e=> {return e.Game == "RPG" || e.Game == "Mobile Gacha"} );
     gamesRPG = elements.filter( e=> {return e.Game == "RPG"} );
     gamesMGacha = elements.filter( e=> {return e.Game == "Mobile Gacha"} );
     
@@ -130,7 +131,23 @@ function init(elements) {
     .attr("fill", "black")
     .text("Su");
 	
+	var width = 400,
+        height = 400;
+
+    var data = [0,1,2,3,4,5,6,7,8,9,10];
 	
+	// Create scale
+    var scale = d3.scaleLinear()
+                  .domain([d3.max(data), d3.min(data)])
+                  .range([100, 675]);
+
+    // Add scales to axis
+    var y_axis = d3.axisRight()
+                   .scale(scale);
+
+    //Append group and insert axis
+    svg.append("g")
+       .call(y_axis);
 	
 	let rects = svg.selectAll()
 	   .data(gamesMGacha)
