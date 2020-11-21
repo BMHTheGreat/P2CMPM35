@@ -189,8 +189,8 @@ function init(elements) {
 	  let heightTop = canvasH - (d.Fun*60);
 	  d3.select(this).transition()
      	.duration("200")
-        .attr("y", d => {return (canvasH - (d.Fun*60)) - 100;} )
-		.attr("height", d => {return (776 - (canvasH - (d.Fun*60))) ; } )
+        .attr("y", d => {return (675 - (57.5*d.Fun));}) //canvasH - (d.Fun*60)) - 100;}
+		.attr("height", d => {return (57.5*d.Fun); } )  //(776 - (canvasH - (d.Fun*60))) 
 	}
 	
 	function shrinkRect(d,i) {
