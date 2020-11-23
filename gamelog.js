@@ -147,7 +147,10 @@ function init(elements) {
 
     //Append group and insert axis
     svg.append("g")
+	   .style("font", "30px times")
+	   //.attr("transorm", "translate(300,0)")
        .call(y_axis);
+	   
 	
 	let rects = svg.selectAll()
 	   .data(gamesMGacha)
@@ -189,8 +192,19 @@ function init(elements) {
 	  let heightTop = canvasH - (d.Fun*60);
 	  d3.select(this).transition()
      	.duration("200")
-        .attr("y", d => {return (675 - (57.5*d.Fun));}) //canvasH - (d.Fun*60)) - 100;}
-		.attr("height", d => {return (57.5*d.Fun); } )  //(776 - (canvasH - (d.Fun*60))) 
+        .attr("y", d => {return (676 - (57.5*d.Fun));}) //canvasH - (d.Fun*60)) - 100;}
+		.attr("height", d => {return (57.5*d.Fun); } )  //(776 - (canvasH - (d.Fun*60)))
+
+      gameText = svg.append("text")
+        .attr("x", 850)  //d=> {return (margin*1.75) + (100*(d.ID)) + 35; }
+		.attr("y", 250)  //d=> {return -35 + canvasH - (margin + (d.GameID*yinc*1.2));}
+		.attr("text-anchor","middle")
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "15px")
+		.attr("fill", "black")
+		.text("Game Fun Level: " );		
+		
+	  
 	}
 	
 	function shrinkRect(d,i) {
@@ -198,7 +212,33 @@ function init(elements) {
 		.duration("200")
 		.attr("y", d=> {return -40 + canvasH - (margin + (d.GameID*yinc*1.2)); })
 		.attr("height", 50)
+		
+	  
+	  gameText.text("")
+	  //d3.select(this.gameText).remove();
 	}
+	
+	/*function gameInfoRed(d,i) {
+	  gameText = svg.append("text")
+        .attr("x", 50)  
+		.attr("y", 50)
+		.attr("text-anchor","middle")
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "15px")
+		.attr("fill", "black")
+		.text("Hello Red");
+	}
+	
+	function gameInfoBlue(d,i) {
+	  gameText = svg.append("text")
+        .attr("x", 100)  
+		.attr("y", 50)
+		.attr("text-anchor","middle")
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "15px")
+		.attr("fill", "black")
+		.text("Hello Blue");
+	}*/
 	
 	
 	
