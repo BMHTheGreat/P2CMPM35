@@ -3,9 +3,12 @@ Visualization of D3
 
 
 Team Scales:
-Alexa Wilbert,
-Brent Hopkins,
-Claudia McMillin
+
+Alexa Wilbert, awilbert@ucsc.edu
+
+Brent Hopkins, brmhopki@ucsc.edu
+
+Claudia McMillin, ccmcmill@ucsc.edu
 
 https://observablehq.com/@d3/zoomable-icicle
 The Zoomable Icicle interaction inspired us to create something that changes in size depending on user reaction.
