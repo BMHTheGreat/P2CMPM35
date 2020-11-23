@@ -17,14 +17,10 @@ function init(elements) {
 		
 		
 	let Games;
-
+    
+	//games = elements.filer( e=> {return e.Game == "RPG" || e.Game == "Mobile Gacha"} );
     gamesRPG = elements.filter( e=> {return e.Game == "RPG"} );
     gamesMGacha = elements.filter( e=> {return e.Game == "Mobile Gacha"} );
-	
-	const line1 = svg.append("line")
-	 .attr("stroke", "black")
-	 .attr("fill", "none",)
-	 .attr("points", "1000, 1000  776, 1000");
     
 	const legend = svg.append("rect")
 	.attr("fill", "transparent")
@@ -135,8 +131,40 @@ function init(elements) {
     .attr("fill", "black")
     .text("Su");
 	
+	var width = 400,
+        height = 400;
+		
+
+    var data = [0,1,2,3,4,5,6,7,8,9,10];
 	
+	// Create scale
+    var scale = d3.scaleLinear()
+                  .domain([d3.max(data), d3.min(data)])
+                  .range([100, 675]);
+
+    // Add scales to axis
+    var y_axis = d3.axisRight()
+                   .scale(scale);
+				   
 	
+				
+
+    //Append group and insert axis
+    svg.append("g")
+	   .style("font", "30px times")
+	   .attr("transform", "translate(70,0)")
+       .call(y_axis);
+	   
+	svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0)
+        .attr("x",-160 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "40px")
+        .text("Levels of Fun");
+	 
 	let rects = svg.selectAll()
 	   .data(gamesMGacha)
 	   .enter()
@@ -174,11 +202,22 @@ function init(elements) {
 
 
 	function expandRect(d,i) {
-	  let heightTop = canvasH - (d.Fun*60);
+	  //let heightTop = canvasH - (d.Fun*60);
 	  d3.select(this).transition()
      	.duration("200")
-        .attr("y", d => {return (canvasH - (d.Fun*60)) - 100;} )
-		.attr("height", d => {return (776 - (canvasH - (d.Fun*60))) ; } )
+        .attr("y", d => {return (676 - (57.5*d.Fun));}) //canvasH - (d.Fun*60)) - 100;}
+		.attr("height", d => {return (57.5*d.Fun); } )  //(776 - (canvasH - (d.Fun*60)))
+
+      /*gameText = svg.append("text")
+        .attr("x", 850)  //d=> {return (margin*1.75) + (100*(d.ID)) + 35; }
+		.attr("y", 250)  //d=> {return -35 + canvasH - (margin + (d.GameID*yinc*1.2));}
+		.attr("text-anchor","middle")
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "15px")
+		.attr("fill", "black")
+		.text("Game Fun Level: " );	*/
+		
+	  
 	}
 	
 	function shrinkRect(d,i) {
@@ -186,7 +225,33 @@ function init(elements) {
 		.duration("200")
 		.attr("y", d=> {return -40 + canvasH - (margin + (d.GameID*yinc*1.2)); })
 		.attr("height", 50)
+		
+	  
+	  gameText.text("")
+	  //d3.select(this.gameText).remove();
 	}
+	
+	/*function gameInfoRed(d,i) {
+	  gameText = svg.append("text")
+        .attr("x", 50)  
+		.attr("y", 50)
+		.attr("text-anchor","middle")
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "15px")
+		.attr("fill", "black")
+		.text("Hello Red");
+	}
+	
+	function gameInfoBlue(d,i) {
+	  gameText = svg.append("text")
+        .attr("x", 100)  
+		.attr("y", 50)
+		.attr("text-anchor","middle")
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "15px")
+		.attr("fill", "black")
+		.text("Hello Blue");
+	}*/
 	
 	
 	
