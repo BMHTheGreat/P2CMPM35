@@ -13,3 +13,6 @@ We all were familiar and fond of Genshin Impact, a gacha game that had come out 
 
 We decided it would be more efficient (and easier to understand for the viewer) to set it up as a bar graph like this example though.
 https://observablehq.com/@d3/zoomable-area-chart
+
+
+We attempted to create more interaction for when you moused over each rectangle. Text was supposed to appear showing the "Fun" value of each game session, but could not get the value from the CSV to show up as anything other than "undefined".
