@@ -18,4 +18,4 @@ We decided it would be more efficient (and easier to understand for the viewer) 
 https://observablehq.com/@d3/zoomable-area-chart
 
 
-We attempted to create more interaction for when you moused over each rectangle. Text was supposed to appear showing the "Fun" value of each game session, but could not get the value from the CSV to show up as anything other than "undefined".
+We attempted to create more interaction for when you moused over each rectangle. Text was supposed to appear showing other information about each game session, such as the number of times the game was played that day, but could not get the value from the CSV to show up as anything other than "undefined".
